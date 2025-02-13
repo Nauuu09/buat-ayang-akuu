@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Surprise for Panii 💖</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        .gift-box {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        .gift-box:hover {
+            transform: scale(1.1);
+        }
+        .lid {
+            width: 160px;
+            height: 40px;
+            background-color: darkred;
+            position: absolute;
+            top: -30px;
+            left: -5px;
+            transition: top 0.5s ease-in-out;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: gold;
+            animation: fall 1.5s linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        .text-container {
+            position: absolute;
+            top: 30%;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            display: none;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="Virgoun  Surat Cinta Untuk Starla Lirik Lagu.mp3" type="audio/mp3">
+    </audio>
+    <div class="gift-box" onclick="openGift()">
+        <div class="lid" id="lid"></div>
+        <p style="color: white; padding-top: 60px;">Click me!</p>
+    </div>
+    <div class="text-container" id="text-container">
+        <p id="special-text"></p>
+    </div>
+    <script>
+        function openGift() {
+            document.getElementById("lid").style.top = "-70px";
+            document.getElementById("bg-music").play();
+            generateConfetti();
+            showText();
+        }
+
+        function generateConfetti() {
+            for (let i = 0; i < 30; i++) {
+                let confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.backgroundColor = ["gold", "red", "pink", "white"][Math.floor(Math.random() * 4)];
+                confetti.style.animationDuration = Math.random() * 2 + 1 + "s";
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 2000);
+            }
+        }
+
+        function showText() {
+            const texts = [
+                "SAYAAANGG NYAA AKUUU, CINTAAA NYAA AKUUU, CEWEEENYAA AKUUUU",
+                "haidah terbesar aku tahun ini, adalah bertemu denganmu",
+                "makasih yaaa udahh hadirr di hidup akuuu",
+                "nggaa mintaa banyakk, akuu mauu kamuu tetapp sama akuu, dann akuu tetapp samaa kamuu",
+                "makasiii yaa sayaangg udah nemeninn akuuu, happy valentine yaa sayaangg",
+                "kitaa bakalann selaluu bersaamaa yaa, no noo adaa yang misahin kitaa",
+                "sayaangg nyaa akuu, sekaliii lagiii selamattt hariii valentinee yaaa",
+                "makaasiiii udahhh menemaniii hari hariii akuuuu yangggg melelahkannn inii, jangann pernahh berubahh yaaa?",
+                "pokooknyaa akuu sayaaanggg bangettt samaaa kamuu",
+                "makaaasiiii yaaa sayaaanggg nyaa akuuu",
+                "HUAAAAAA SAYAANGGGG MAKAAAAASIIIIII MAKAAASIIIIII MAKAAAASIIII",
+                "JUJURR AKUU NANGISSS ASLII HEHE HUAAAA",
+                "I LOVE YOU"
+            ];
+            let textContainer = document.getElementById("text-container");
+            let textElement = document.getElementById("special-text");
+            textElement.innerHTML = texts.join("<br>");
+            textContainer.style.display = "block";
+            textContainer.style.animation = "fadeIn 1.5s";
+            setTimeout(() => {
+                textContainer.style.display = "none";
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
